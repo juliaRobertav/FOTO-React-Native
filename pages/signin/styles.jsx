@@ -2,11 +2,20 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:'#a7c1eb',
+        // backgroundColor:'#a7c1eb',
+        backgroundImage: 'assets/LoginPage.jpg',
         alignItems:'center',
         justifyContent:'center',
         flex:1,
+        // backgroundSize: 'cover',
+        // backgroundRepeat: 'no-repeat',
+        // backgroundPosition: 'center',
+        // width: '100%',
+        // height: '100vh',
+        textAlign: 'center',
+        display: 'flex',
     },
+
     caixa:{
         width:'80%',
         borderWidth:1,
