@@ -4,16 +4,17 @@ import styles from './styles'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../firebaseConfig'
 
+import background from '../../assets/LoginPage.jpg'
+
 export default function Login({ navigation }) {
 
-    const imagem_fundo= './assets/imagens/LoginPage.jpg'
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [loginAttempts, setLoginAttempts] = useState(0); 
-    const [isScreenLocked, setIsScreenLocked] = useState(false);
+    const [login, setLogin] = useState(0); 
+    const [telaBloq, setTelaBloq] = useState(false);
     
      const logar = () => {
-    if (isScreenLocked) {
+    if (telaBloq) {
       return; // Não faça nada se a tela estiver bloqueada
     }
 
@@ -23,15 +24,15 @@ export default function Login({ navigation }) {
         navigation.navigate('Home', { usuario: user.email });
       })
       .catch((error) => {
-        setLoginAttempts(loginAttempts + 1);
+        setLogin(login + 1);
 
         console.log('Lagartixa...');
         const errorCode = error.code;
         const errorMessage = error.message;
 
-        if (loginAttempts >= 2) {
+        if (login >= 2) {
           // Bloqueie a tela definindo isScreenLocked como true
-          setIsScreenLocked(true);
+          setTelaBloq(true);
           console.log('Você atingiu o número máximo de tentativas. Bloqueando tela...');
         }
       });
@@ -44,11 +45,11 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
           <ImageBackground
-            source={require(imagem_fundo)}
             style={styles.container}
+            source={background}
           >
-          {isScreenLocked ? (
-              <Text style={styles.title}>Tela bloqueada. Entre em contato com o suporte.</Text>
+          {telaBloq ? (
+              <Text style={styles.title}>Você atingiu o número máximo de tentativas...</Text>
           
           ) : (
             <View>

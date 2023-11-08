@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
     container:{
         // backgroundColor:'#a7c1eb',
-        backgroundImage: 'assets/LoginPage.jpg',
+        // backgroundImage: 'assets/LoginPage.jpg',
         alignItems:'center',
         justifyContent:'center',
         flex:1,
